@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="af51a606-be69-4160-b3c5-f649d3ffcbfd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cards2/CardRansk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cards2/CardRanks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cards2/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cards2/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,10 +25,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2d3bO2lsUxHTE1xWMHhN357gFOf" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -39,6 +41,7 @@
   "keyToString": {
     "Application.Main.executor": "Run",
     "Application.cards2.Main.executor": "Run",
+    "Application.cards3.Main.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
@@ -52,7 +55,12 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.cards2.Main">
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cards3" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.cards3.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="cards1.Main" />
       <module name="WorkingWithAbstraction" />
@@ -79,8 +87,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="cards3.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cards3.Main" />
+      <module name="WorkingWithAbstraction" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cards3.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.cards3.Main" />
         <item itemvalue="Application.cards2.Main" />
         <item itemvalue="Application.Main" />
       </list>
@@ -101,7 +123,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1709239676598</updated>
-      <workItem from="1709239677668" duration="1035000" />
+      <workItem from="1709239677668" duration="1631000" />
+      <workItem from="1709273020137" duration="3019000" />
     </task>
     <servers />
   </component>

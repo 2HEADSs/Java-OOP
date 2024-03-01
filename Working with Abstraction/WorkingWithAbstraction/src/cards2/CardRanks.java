@@ -1,6 +1,6 @@
 package cards2;
 
-public enum CardRansk {
+public enum CardRanks {
     ACE,
     TWO,
     THREE,
