@@ -1,4 +1,4 @@
-package DefineAnInterfacePerson;
+package define_an_interface_person;
 
 public class Citizen implements Person{
     private String name;

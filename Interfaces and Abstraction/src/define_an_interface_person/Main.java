@@ -1,4 +1,4 @@
-package DefineAnInterfacePerson;
+package define_an_interface_person;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
