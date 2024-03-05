@@ -1,5 +1,5 @@
 package MultipleImplementation;
 
-public interface Birthable extends  Identifiable{
+public interface Birthable {
     String getBirthDate();
 }
