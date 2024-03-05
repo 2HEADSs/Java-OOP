@@ -1,6 +1,6 @@
 package MultipleImplementation;
 
-public class Citizen implements  Person{
+public class Citizen implements  Person, Identifiable, Birthable{
     private String name;
     private int age;
     private String id;
@@ -15,22 +15,22 @@ public class Citizen implements  Person{
 
     @Override
     public String getBirthDate() {
-        return birthDate;
+        return this.birthDate;
     }
 
     @Override
     public String getId() {
-        return id;
+        return this.id;
     }
 
     @Override
     public String getName() {
-        return name;
+        return this.name;
     }
 
     @Override
     public int getAge() {
-        return age;
+        return this.age;
     }
 
     @Override
