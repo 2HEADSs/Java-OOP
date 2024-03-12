@@ -15,8 +15,9 @@ public class Main {
         Vehicle truck = new Truck(Double.parseDouble(tokens[1]),
                 Double.parseDouble(tokens[2]));
 
-        Map<String, Vehicle> vehicleMap = new LinkedHashMap<>(Map.of("Car", car,
-                "Truck", truck));
+        Map<String, Vehicle> vehicleMap = new LinkedHashMap<>();
+        vehicleMap.put("Car", car);
+        vehicleMap.put("Truck", truck);
 
 
         int n = Integer.parseInt(scanner.nextLine());
