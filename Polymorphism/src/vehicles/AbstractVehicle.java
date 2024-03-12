@@ -6,12 +6,11 @@ public abstract class AbstractVehicle implements Vehicle {
 
     private double fuelQuantity;
     private double fuelConsumption;
-    private DecimalFormat dc;
+    private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#.##");
 
     public AbstractVehicle(double fuelQuantity, double fuelConsumption) {
         this.fuelQuantity = fuelQuantity;
         this.fuelConsumption = fuelConsumption;
-        this.dc = new DecimalFormat("#.##");
     }
 
     @Override
@@ -21,7 +20,7 @@ public abstract class AbstractVehicle implements Vehicle {
             this.fuelQuantity -= neededFuel;
             return String.format("%s travelled %s km",
                     this.getClass().getSimpleName(),
-                    dc.format(distance));
+                    DECIMAL_FORMAT.format(distance));
         }
         return String.format("%s needs refueling",
                 this.getClass().getSimpleName());
