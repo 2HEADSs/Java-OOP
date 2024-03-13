@@ -36,7 +36,7 @@ public class Main {
                 switch (tokens[0]) {
                     case "Drive":
                         if("Bus".equals(vehicle.getClass().getSimpleName())){
-                            vehicle.turnOnOfAc(vehicle.is);
+                            vehicle.turnOnOfAc(vehicle.isEmpty());
                             vehicle.setFuelConsumption(vehicle.getFuelConsumption() + 1.4);
                         }
 
