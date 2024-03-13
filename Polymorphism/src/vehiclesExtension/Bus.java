@@ -23,7 +23,7 @@ public class Bus extends AbstractVehicle {
         if(isEmpty){
             super.setFuelConsumption(getFuelConsumption());
         }else {
-            super.getFuelConsumption(getFuelConsumption()+ 1.4)
+//            super.getFuelConsumption(getFuelConsumption()+ 1.4)
         }
     }
 }
