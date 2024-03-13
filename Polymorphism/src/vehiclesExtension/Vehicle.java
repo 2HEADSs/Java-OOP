@@ -8,7 +8,7 @@ public interface Vehicle {
 
     void setFuelConsumption(double fuelConsumption);
     default boolean isEmpty(){
-
+return true;
     };
     default void setEmpty(boolean empty){
 
