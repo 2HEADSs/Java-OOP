@@ -1,6 +1,6 @@
 package solid.products;
 
-public class Lemonade implements Product{
+public class Lemonade implements Drink {
 
     public static final double CALORIES_PER_100_GRAMS = 53.0;
     public static final double DENSITY = 0.7;
