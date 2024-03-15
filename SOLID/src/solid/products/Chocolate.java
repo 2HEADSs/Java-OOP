@@ -1,6 +1,6 @@
 package solid.products;
 
-public class Chocolate implements Product {
+public class Chocolate implements Food {
 
     public static final double CALORIES_PER_100_GRAMS = 575.0;
 
