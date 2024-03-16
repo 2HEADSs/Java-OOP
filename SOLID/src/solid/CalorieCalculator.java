@@ -1,8 +1,5 @@
 package solid;
 
-import solid.products.Chocolate;
-import solid.products.Coke;
-import solid.products.Lemonade;
 import solid.products.Product;
 
 import java.util.List;
@@ -10,18 +7,14 @@ import java.util.List;
 public class CalorieCalculator {
 
 
-    public CalorieCalculator() {
+    private CalorieCalculator() {
     }
 
-    public double sum(List<Product> products) {
-        double sum = 0;
-        products.stream().mapToDouble(Product::amountOfCalories);
-
-
-        return sum;
+    public static double sum(List<Product> products) {
+        return products.stream().mapToDouble(Product::amountOfCalories).sum();
     }
 
-    public double average(List<Product> products) {
+    public static double average(List<Product> products) {
         return sum(products) / products.size();
     }
 
