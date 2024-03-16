@@ -18,4 +18,9 @@ public class Chocolate implements Food {
     public double amountOfCalories() {
         return CALORIES_PER_100_GRAMS / 100 * getGrams();
     }
+
+    @Override
+    public double amountOfFood() {
+        return getGrams() / 1000;
+    }
 }
