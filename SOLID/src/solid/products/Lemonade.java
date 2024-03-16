@@ -18,6 +18,11 @@ public class Lemonade implements Drink {
     @Override
     public double amountOfCalories() {
         double grams = getMilliliters() * DENSITY;
-        return (Coke.CALORIES_PER_100_GRAMS / 100) * grams;
+        return CALORIES_PER_100_GRAMS / 100 * grams;
+    }
+
+    @Override
+    public double amountOfDrinks() {
+        return getMilliliters()/1000 * DENSITY;
     }
 }
