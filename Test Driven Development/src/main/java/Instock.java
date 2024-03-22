@@ -1,14 +1,17 @@
 import jdk.jshell.spi.ExecutionControl;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Instock implements ProductStock {
 
-    private LinkedHashMap<String,Product> products;
-    public Instock(){
+    private LinkedHashMap<String, Product> products;
+
+    public Instock() {
         this.products = new LinkedHashMap<>();
     }
 
@@ -34,7 +37,7 @@ public class Instock implements ProductStock {
 
     @Override
     public void changeQuantity(String label, int quantity) {
-        if(!contains(label)){
+        if (!contains(label)) {
             throw new IllegalArgumentException();
         }
         Product product = products.get(label);
@@ -52,7 +55,7 @@ public class Instock implements ProductStock {
     @Override
     public Product findByLabel(String label) {
         Product product = products.get(label);
-        if(product ==null){
+        if (product == null) {
             throw new IllegalArgumentException();
         }
         return product;
@@ -68,26 +71,42 @@ public class Instock implements ProductStock {
 
     @Override
     public Iterable<Product> findAllInRange(double lo, double hi) {
-        return null;
+        return products.values().stream()
+                .filter(p -> p.getPrice() > lo && p.getPrice() <= hi)
+                .sorted(Comparator.comparing(Product::getPrice).reversed())
+                .collect(Collectors.toList());
     }
 
     @Override
     public Iterable<Product> findAllByPrice(double price) {
-        return null;
+        return findAllByPredicate(p -> p.getPrice() == price);
     }
 
     @Override
     public Iterable<Product> findFirstMostExpensiveProducts(int count) {
-        return null;
+        if (products.size() < count) {
+            return new ArrayList<>();
+        }
+        return products.values()
+                .stream()
+                .sorted(Comparator.comparing(Product::getPrice).reversed())
+                .limit(count)
+                .collect(Collectors.toList());
     }
 
     @Override
     public Iterable<Product> findAllByQuantity(int quantity) {
-        return null;
+        return findAllByPredicate(p -> p.getQuantity() == quantity);
+    }
+
+    public Iterable<Product> findAllByPredicate(Predicate<Product> predicate) {
+        return products.values().stream()
+                .filter(predicate)
+                .collect(Collectors.toList());
     }
 
     @Override
     public Iterator<Product> iterator() {
-        return null;
+        return products.values().iterator();
     }
 }
