@@ -3,6 +3,8 @@ package catHouse.core;
 import catHouse.common.ConstantMessages;
 import catHouse.common.ExceptionMessages;
 import catHouse.entities.cat.Cat;
+import catHouse.entities.cat.LonghairCat;
+import catHouse.entities.cat.ShorthairCat;
 import catHouse.entities.houses.House;
 import catHouse.entities.houses.LongHouse;
 import catHouse.entities.houses.ShortHouse;
@@ -52,7 +54,7 @@ public class ControllerImpl implements Controller {
             throw new IllegalArgumentException(ExceptionMessages.INVALID_TOY_TYPE);
         }
         this.toys.buyToy(toy);
-        return String.format(ConstantMessages.SUCCESSFULLY_ADDED_TOY_IN_HOUSE, type);
+        return String.format(ConstantMessages.SUCCESSFULLY_ADDED_TOY_TYPE, type);
 
     }
 
@@ -60,7 +62,7 @@ public class ControllerImpl implements Controller {
     public String toyForHouse(String houseName, String toyType) {
         Toy toy = this.toys.findFirst(toyType);
         if (toy == null) {
-            throw new IllegalArgumentException(ExceptionMessages.NO_TOY_FOUND);
+            throw new IllegalArgumentException(String.format(ExceptionMessages.NO_TOY_FOUND, toyType));
         }
         House house = getHouseByName(houseName);
         house.buyToy(toy);
@@ -77,14 +79,34 @@ public class ControllerImpl implements Controller {
 
     @Override
     public String addCat(String houseName, String catType, String catName, String catBreed, double price) {
-        return null;
+        Cat cat;
+        switch (catType) {
+            case "ShorthairCat":
+                cat = new ShorthairCat(catName, catBreed, price);
+                break;
+            case "LonghairCat":
+                cat = new LonghairCat(catName, catBreed, price);
+                break;
+            default:
+                throw new IllegalArgumentException(ExceptionMessages.INVALID_CAT_TYPE);
+        }
+
+        House house = getHouseByName(houseName);
+        boolean checkShort = catType.startsWith("Short") && house.getClass().getSimpleName().startsWith("Short");
+        boolean checkLong = catType.startsWith("Long") && house.getClass().getSimpleName().startsWith("Long");
+        if (checkLong || checkShort) {
+            house.addCat(cat);
+        } else {
+            return ConstantMessages.UNSUITABLE_HOUSE;
+        }
+        return String.format(ConstantMessages.SUCCESSFULLY_ADDED_CAT_IN_HOUSE, catType, houseName);
     }
 
     @Override
     public String feedingCat(String houseName) {
         House house = getHouseByName(houseName);
         house.feeding();
-        return String.format(ConstantMessages.FEEDING_CAT,house.getCats().size());
+        return String.format(ConstantMessages.FEEDING_CAT, house.getCats().size());
     }
 
     @Override
@@ -92,12 +114,16 @@ public class ControllerImpl implements Controller {
         House house = getHouseByName(houseName);
         double priceCats = house.getCats().stream().mapToDouble(Cat::getPrice).sum();
         double priceToys = house.getToys().stream().mapToDouble(Toy::getPrice).sum();
-        double priceAll= priceCats+priceToys;
-        return String.format(ConstantMessages.VALUE_HOUSE,houseName,priceAll);
+        double priceAll = priceCats + priceToys;
+        return String.format(ConstantMessages.VALUE_HOUSE, houseName, priceAll);
     }
 
     @Override
     public String getStatistics() {
-        return null;
+        StringBuilder sb = new StringBuilder();
+        for (House house : this.houses) {
+            sb.append(house.getStatistics()).append(System.lineSeparator());
+        }
+        return sb.toString().trim();
     }
 }

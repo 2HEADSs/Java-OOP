@@ -4,7 +4,7 @@ public class LonghairCat extends BaseCat{
 
     private static final int LONGHAIR_CAT_KG = 9;
 
-    public LonghairCat(String name, String breed, int kilograms, double price) {
+    public LonghairCat(String name, String breed, double price) {
         super(name, breed, LONGHAIR_CAT_KG, price);
     }
 

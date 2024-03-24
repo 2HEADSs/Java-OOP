@@ -8,8 +8,8 @@ public abstract class BaseCat implements Cat {
     private int kilograms;
     private double price;
 
-    public BaseCat(String name, String breed,int kilograms, double price) {
-        setBreed(name);
+    public BaseCat(String name, String breed, int kilograms, double price) {
+        setName(name);
         setBreed(breed);
         setPrice(price);
         setKilograms(kilograms);

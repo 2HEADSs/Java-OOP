@@ -62,20 +62,24 @@ public abstract class BaseHouse implements House {
     @Override
     public String getStatistics() {
         StringBuilder builder = new StringBuilder();
+//        System.out.println("--------------------");
+//        System.out.println(this.getName());
+//        System.out.println(this.getClass().getSimpleName());
+//        System.out.println(this.getCats().isEmpty());
+//        System.out.println("--------------------");
         builder.append(String.format("%s %s:%n", this.getName(), this.getClass().getSimpleName()));
         builder.append("Cats: ");
         if (this.getCats().isEmpty()) {
-            builder.append("none");
+            builder.append("none").append(System.lineSeparator());
         } else {
-            builder.append(
-                    this.getCats()
+            builder.append(this.getCats()
                             .stream()
                             .map(Cat::getName)
                             .collect(Collectors.joining(" ")).trim());
-            builder.append(System.lineSeparator());
         }
-        builder.append(String.format("Toys: %d Softness: %d", this,getToys().size(), this.sumSoftness()));
-        return builder.toString();
+        builder.append(System.lineSeparator());
+        builder.append(String.format("Toys: %d Softness: %d", this.getToys().size(), this.sumSoftness()));
+        return builder.toString().trim();
     };
 
     @Override
