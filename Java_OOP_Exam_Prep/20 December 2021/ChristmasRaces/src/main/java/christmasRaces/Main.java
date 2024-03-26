@@ -19,11 +19,11 @@ public class Main {
         Repository<Race> raceRepository = new RaceRepository();
         Repository<Driver> driverRepository = new DriverRepository();
 
-//        Controller controller = new ControllerImpl(driverRepository, carRepository, raceRepository);
+        Controller controller = new ControllerImpl(driverRepository, carRepository, raceRepository);
 
         ConsoleReader reader = new ConsoleReader();
         ConsoleWriter writer = new ConsoleWriter();
-//        EngineImpl engine = new EngineImpl(reader, writer, controller);
-//        engine.run();
+        EngineImpl engine = new EngineImpl(reader, writer, controller);
+        engine.run();
     }
 }
