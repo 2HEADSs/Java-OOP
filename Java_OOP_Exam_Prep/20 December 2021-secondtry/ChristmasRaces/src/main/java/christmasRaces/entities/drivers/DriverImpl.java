@@ -1,35 +1,60 @@
 package christmasRaces.entities.drivers;
 
+import christmasRaces.common.ExceptionMessages;
 import christmasRaces.entities.cars.Car;
 
-public class DriverImpl implements Driver{
+public class DriverImpl implements Driver {
+
+    private String name;
+    private Car car;
+    private int numberOfWins;
+    private boolean canParticipate = false;
+
+    public void setName(String name) {
+        if (name == null || name.trim().length() < 5) {
+            throw new IllegalArgumentException(String.format(
+                    ExceptionMessages.INVALID_NAME, name, 5
+            ));
+        }
+        this.name = name;
+    }
+
     @Override
     public String getName() {
-        return null;
+        return this.name;
     }
 
     @Override
     public Car getCar() {
-        return null;
+        return this.car;
+    }
+
+    public DriverImpl(String name) {
+        this.name = name;
     }
 
     @Override
     public int getNumberOfWins() {
-        return 0;
+        return this.numberOfWins;
     }
 
     @Override
     public void addCar(Car car) {
-
+        if (car == null) {
+            throw new IllegalArgumentException(String.format(
+                    ExceptionMessages.CAR_INVALID
+            ));
+        }
+        this.car = car;
     }
 
     @Override
     public void winRace() {
-
+        this.numberOfWins++;
     }
 
     @Override
     public boolean getCanParticipate() {
-        return false;
+        return car != null;
     }
 }
