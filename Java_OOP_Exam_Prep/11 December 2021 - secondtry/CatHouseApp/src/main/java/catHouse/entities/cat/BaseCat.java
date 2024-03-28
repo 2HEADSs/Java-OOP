@@ -1,7 +1,7 @@
 package catHouse.entities.cat;
 
 public abstract class BaseCat implements Cat{
-    
+
     @Override
     public String getName() {
         return null;
