@@ -34,7 +34,7 @@ public class RaceImpl implements Race {
 
     @Override
     public String getName() {
-        return null;
+        return this.name;
     }
 
     public void setLaps(int laps) {
@@ -48,12 +48,12 @@ public class RaceImpl implements Race {
 
     @Override
     public int getLaps() {
-        return 0;
+        return this.laps;
     }
 
     @Override
     public Collection<Driver> getDrivers() {
-        return null;
+        return this.drivers;
     }
 
 

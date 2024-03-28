@@ -15,7 +15,7 @@ public abstract class BaseCar implements Car{
 
     @Override
     public String getModel() {
-        return null;
+        return model;
     }
 
     public void setModel(String model) {
