@@ -69,18 +69,18 @@ public class ControllerImpl implements Controller {
         House house = getHouse(houseName);
         house.buyToy(toy);
         this.toys.removeToy(toy);
-        return String.format(ConstantMessages.SUCCESSFULLY_ADDED_TOY_IN_HOUSE,toyType,houseName);
+        return String.format(ConstantMessages.SUCCESSFULLY_ADDED_TOY_IN_HOUSE, toyType, houseName);
     }
 
     @Override
     public String addCat(String houseName, String catType, String catName, String catBreed, double price) {
         Cat cat;
-        switch (catType){
+        switch (catType) {
             case "ShorthairCat":
-                cat = new ShorthairCat(catName,catBreed,price);
+                cat = new ShorthairCat(catName, catBreed, price);
                 break;
             case "LonghairCat":
-                cat = new LonghairCat(catName,catBreed,price);
+                cat = new LonghairCat(catName, catBreed, price);
                 break;
             default:
                 throw new IllegalArgumentException(String.format(ExceptionMessages.INVALID_CAT_TYPE));
@@ -88,13 +88,13 @@ public class ControllerImpl implements Controller {
         House house = getHouse(houseName);
         boolean checkShort = house.getClass().getSimpleName().startsWith("Short") && catType.startsWith("Short");
         boolean checkLong = house.getClass().getSimpleName().startsWith("Long") && catType.startsWith("Long");
-        if(checkShort || checkLong){
+        if (checkShort || checkLong) {
             house.addCat(cat);
-        }else {
+        } else {
             return String.format(ConstantMessages.UNSUITABLE_HOUSE);
         }
 
-        return String.format(ConstantMessages.SUCCESSFULLY_ADDED_CAT_IN_HOUSE, catType,houseName);
+        return String.format(ConstantMessages.SUCCESSFULLY_ADDED_CAT_IN_HOUSE, catType, houseName);
     }
 
     @Override
@@ -103,7 +103,7 @@ public class ControllerImpl implements Controller {
         house.feeding();
 
 
-        return String.format(ConstantMessages.FEEDING_CAT,house.getCats().size());
+        return String.format(ConstantMessages.FEEDING_CAT, house.getCats().size());
     }
 
     @Override
@@ -118,8 +118,13 @@ public class ControllerImpl implements Controller {
 
     @Override
     public String getStatistics() {
-        return null;
+        StringBuilder sb = new StringBuilder();
+        for (House house : this.houses) {
+            sb.append(house.getStatistics()).append(System.lineSeparator());
+        }
+        return sb.toString().trim();
     }
+
     private House getHouse(String houseName) {
         return this.houses.stream().filter(h -> h.getName().equals(houseName))
                 .findFirst().get();

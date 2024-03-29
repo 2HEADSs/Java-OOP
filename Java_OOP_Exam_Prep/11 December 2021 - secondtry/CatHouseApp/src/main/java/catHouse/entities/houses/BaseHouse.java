@@ -5,6 +5,7 @@ import catHouse.common.ExceptionMessages;
 import catHouse.entities.cat.Cat;
 import catHouse.entities.toys.Toy;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
@@ -17,6 +18,8 @@ public class BaseHouse implements House {
     public BaseHouse(String name, int capacity) {
         this.setName(name);
         this.capacity = capacity;
+        this.toys = new ArrayList<>();
+        this.cats = new ArrayList<>();
     }
 
     @Override
@@ -56,17 +59,19 @@ public class BaseHouse implements House {
     @Override
     public String getStatistics() {
         StringBuilder sb = new StringBuilder();
+        sb.append(String.format("%s %s",this.getName(), this.getClass().getSimpleName()));
+        sb.append(System.lineSeparator());
+        sb.append("Cats: ");
         if(this.cats.isEmpty()){
-            sb.append("none").append(System.lineSeparator());
+            sb.append("none");
         } else {
-            sb.append(this.name+ " " + this.getClass().getSimpleName());
             sb.append(this.getCats().stream()
                     .map(Cat::getName)
                     .collect(Collectors.joining(" ")).trim()
             );
         }
         sb.append(System.lineSeparator());
-        sb.append("Toys: %d Softenss: %d",this.getToys().size(), this.sumSoftness());
+        sb.append(String.format("Toys: %d Softenss: %d",this.getToys().size(), this.sumSoftness())).append(System.lineSeparator());
         return sb.toString().trim();
     }
 
