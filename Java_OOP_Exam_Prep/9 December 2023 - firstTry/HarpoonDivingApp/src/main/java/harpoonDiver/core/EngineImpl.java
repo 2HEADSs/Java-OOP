@@ -73,27 +73,27 @@ public class EngineImpl implements Engine{
 
     private String addDiver(String[] data) {
         // TODO
-        return null;
+        return controller.addDiver(data[0],data[1]);
     }
     private String addDivingSite(String[] data) {
         // TODO
         String siteName = data[0];
         String[] seaCreature = Arrays.stream(data).skip(1).toArray(String[]::new);
-        return null;
+        return controller.addDivingSite(siteName,seaCreature);
     }
     private String removeDiver(String[] data) {
         // TODO
-        return null;
+        return controller.removeDiver(data[0]);
     }
 
 
     private String startDiving(String[] data) {
-        // TODO
-        return null;
+        //
+        return controller.startDiving(data[0]);
     }
     private String getStatistics() {
         // TODO
-        return null;
+        return controller.getStatistics();
     }
 
 
