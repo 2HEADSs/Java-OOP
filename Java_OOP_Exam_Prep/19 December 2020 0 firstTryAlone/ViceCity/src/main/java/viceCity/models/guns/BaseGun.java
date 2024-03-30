@@ -37,9 +37,6 @@ public abstract class BaseGun implements Gun {
         this.totalBullets = totalBullets;
     }
 
-    public void setCanFire(boolean canFire) {
-        this.canFire = canFire;
-    }
 
     @Override
     public String getName() {
@@ -53,7 +50,7 @@ public abstract class BaseGun implements Gun {
 
     @Override
     public boolean canFire() {
-        return this.totalBullets > 0;
+        return this.bulletsPerBarrel > 0;
     }
 
     @Override
@@ -61,6 +58,4 @@ public abstract class BaseGun implements Gun {
         return this.totalBullets;
     }
 
-    @Override
-    public abstract int fire();
 }
