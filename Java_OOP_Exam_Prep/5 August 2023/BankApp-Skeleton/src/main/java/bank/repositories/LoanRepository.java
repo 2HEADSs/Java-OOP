@@ -5,7 +5,7 @@ import bank.entities.loan.Loan;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class LoanRepository implements Repository{
+public class LoanRepository implements Repository {
     private Collection<Loan> loans;
 
     public LoanRepository() {
@@ -24,6 +24,9 @@ public class LoanRepository implements Repository{
 
     @Override
     public Loan findFirst(String type) {
-        return null;
+        return this.loans.stream()
+                .filter(l -> l.getClass().getSimpleName().equals(type))
+                .findFirst()
+                .orElse(null);
     }
 }
