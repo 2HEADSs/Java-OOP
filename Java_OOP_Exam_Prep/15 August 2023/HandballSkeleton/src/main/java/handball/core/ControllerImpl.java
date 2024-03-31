@@ -67,6 +67,7 @@ public class ControllerImpl implements Controller {
                 .findFirst().get();
 
         gameplay.addEquipment(equipment);
+        this.equipmentRepo.remove(equipment);
 
         return String.format(ConstantMessages.SUCCESSFULLY_ADDED_EQUIPMENT_IN_GAMEPLAY, equipmentType, gameplayName);
     }
