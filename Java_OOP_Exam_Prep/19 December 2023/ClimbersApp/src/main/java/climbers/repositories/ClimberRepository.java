@@ -4,10 +4,15 @@ import climbers.models.climber.Climber;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class ClimberRepository implements Repository<Climber> {
     private Map<String, Climber> climbers;
+
+    public ClimberRepository() {
+        this.climbers = new LinkedHashMap<>();
+    }
 
     @Override
     public Collection<Climber> getCollection() {

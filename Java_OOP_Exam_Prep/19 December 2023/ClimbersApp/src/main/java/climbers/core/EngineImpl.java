@@ -68,8 +68,7 @@ public class EngineImpl implements Engine{
     }
 
     private String addClimber(String[] data) {
-        //TODO
-        return null;
+        return controller.addClimber(data[0],data[1]);
     }
 
     private String addMountain(String[] data) {
@@ -79,16 +78,16 @@ public class EngineImpl implements Engine{
     }
     private String removeClimber(String[] data) {
         //TODO
-        return null;
+        return controller.removeClimber(data[0]);
     }
 
     private String startClimbing(String[] data) {
         //TODO
-        return null;
+        return controller.startClimbing(data[0]);
     }
     private String getStatistics() {
         //TODO
-        return null;
+        return controller.getStatistics();
     }
 
 

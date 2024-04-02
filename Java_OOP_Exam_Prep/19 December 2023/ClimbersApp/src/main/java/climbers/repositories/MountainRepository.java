@@ -4,10 +4,15 @@ import climbers.models.mountain.Mountain;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class MountainRepository implements Repository<Mountain> {
     private Map<String, Mountain> mountains;
+
+    public MountainRepository() {
+        this.mountains = new LinkedHashMap<>();
+    }
 
     @Override
     public Collection<Mountain> getCollection() {
