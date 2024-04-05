@@ -8,7 +8,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class DiverRepository implements Repository<Diver> {
-    Map<String, Diver> divers;
+    private Map<String, Diver> divers;
 
     public DiverRepository() {
         this.divers = new LinkedHashMap<>();
