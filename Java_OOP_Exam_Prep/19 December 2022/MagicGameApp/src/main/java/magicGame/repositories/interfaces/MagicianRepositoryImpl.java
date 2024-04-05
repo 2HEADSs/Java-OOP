@@ -1,4 +1,4 @@
-package magicGame.repositories;
+package magicGame.repositories.interfaces;
 
 import magicGame.common.ExceptionMessages;
 import magicGame.models.magicians.Magician;
@@ -23,14 +23,18 @@ public class MagicianRepositoryImpl implements MagicianRepository {
     @Override
     public void addMagician(Magician magician) {
         if (magician == null) {
-            throw new NullPointerException(ExceptionMessages.INVALID_MAGIC_REPOSITORY);
+            throw new NullPointerException(ExceptionMessages.INVALID_MAGICIAN_REPOSITORY);
         }
         this.data.add(magician);
     }
 
     @Override
     public boolean removeMagician(Magician magician) {
-        return this.data.remove(magician);
+        if (data.contains(magician)) {
+            data.remove(magician);
+            return true;
+        }
+        return false;
     }
 
     @Override
